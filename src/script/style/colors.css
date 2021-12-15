@@ -1,0 +1,22 @@
+.blur {
+    background-color: hsla(0, 0%, 100%, .8) !important;
+    backdrop-filter: saturate(200%) blur(30px);
+}
+
+.bg-gradient-primary{
+    background-image: linear-gradient(310deg,#7928ca,#ff0080);
+}
+
+.shadow-blur {
+    box-shadow: inset 0 0 1px 1px hsla(0,0%,100%,.9),0 20px 27px 0 rgba(0,0,0,.05)!important;
+}
+
+.bg-grey{
+    background-color: #f3f3f3;
+}
+
+.text-gradient {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 1;
+}
