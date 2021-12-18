@@ -1,4 +1,5 @@
 @import "colors.css";
+@import "fonts.css";
 
 * {
     padding: 0;
@@ -10,12 +11,16 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
-header{
-    margin-bottom: 10vh;
+h1, h2, h3{
+    font-family: 'Barlow', 'sans-serif';
 }
 
-main {
-    margin: 5vh 0;
+p{
+    font-size: 17px;
+}
+
+#provinsi, #tentang{
+    padding-top: 10vh;
 }
 
 .blur.blur-rounded {
@@ -40,6 +45,12 @@ main {
     overflow: hidden;
     display: flex;
     align-items: center;
+    background-size: cover;
+    background-position: 50%;
+}
+
+.covid-img{
+    background-image: url("https://cdn.nihoncentre.com/assets/media/2020/05/maxresdefault-1024x576.jpg");
     background-size: cover;
     background-position: 50%;
 }
@@ -90,6 +101,6 @@ main {
     }
 
     .page-header{
-        min-height: 90vh;
+        min-height: 80vh;
     }
 }
