@@ -24,7 +24,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav mx-auto">
                         <a class="nav-link me-3 active" aria-current="page" href="#body">Home</a>
-                        <a class="nav-link me-3" href="#">Tentang</a>
+                        <a class="nav-link me-3" href="#tentang">Tentang</a>
                         <a class="nav-link me-3" href="#provinsi">Provinsi</a>
                         <a class="nav-link me-3 disabled">Disabled</a>
                     </div>
@@ -103,7 +103,7 @@
     </header>
 
     <main>
-        <div id="provinsi" class="mt-lg-2">
+        <div id="provinsi">
             <div class="container">
                 <div class="row mb-2">
                     <div class="col-md-12 text-center">
@@ -112,30 +112,31 @@
                     </div>
                 </div>
                 <section class="row justify-content-end">
-                    <div class="col-lg-3 blur py-3"> 
+                    <div class="col-lg-3 blur py-3">
                         <div class="col shadow-blur text-center py-3" style="border-radius: 2vh;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" height="50vh" alt="indonesia flag" class="mb-2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg"
+                                height="50vh" alt="indonesia flag" class="mb-2">
                             <h4>Indonesia</h4>
-                        </div> 
+                        </div>
                     </div>
                     <div class="col-lg-9 me-0 py-3">
                         <div class="row justify-content-end">
-                            <div class="col-md-3 position-relative ms-3 shadow-blur" style="border-radius: 2vh;">
+                            <div class="col-md-3 ms-3 shadow-blur" style="border-radius: 2vh;">
                                 <div class="text-center py-3">
                                     <p>Terpapar Covid-19</p>
-                                    <h1 class="fw-bold">4000+</h1>
+                                    <h2 class="fw-bold">4000+</h2>
                                 </div>
                             </div>
-                            <div class="col-md-3 position-relative ms-3 shadow-blur" style="border-radius: 2vh;">
+                            <div class="col-md-3 ms-3 shadow-blur" style="border-radius: 2vh;">
                                 <div class="text-center py-3">
                                     <p>Meninggal Dunia</p>
-                                    <h1 class="fw-bold">4000+</h1>
+                                    <h2 class="fw-bold">4000+</h2>
                                 </div>
                             </div>
-                            <div class="col-md-3 position-relative ms-3 shadow-blur" style="border-radius: 2vh;">
+                            <div class="col-md-3 ms-3 shadow-blur" style="border-radius: 2vh;">
                                 <div class="text-center py-3">
                                     <p>Pulih dari Covid-19</p>
-                                    <h1 class="fw-bold">4000+</h1>
+                                    <h2 class="fw-bold">4000+</h2>
                                 </div>
                             </div>
                         </div>
@@ -146,36 +147,83 @@
                         <h3 class="text-center">Pilih Provinsi Anda: </h3>
                         <div class="overflow-scroll" style="height: 50vh;">
                             <div class="list-group">
-                                <button type="button" class="list-group-item list-group-item-action activee" aria-current="true">
-                                  The current button
+                                <button type="button" class="list-group-item list-group-item-action activee"
+                                    aria-current="true">
+                                    The current button
                                 </button>
-                                <button type="button" class="list-group-item list-group-item-action">A second item</button>
-                                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                                <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
-                                <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>
+                                <button type="button" class="list-group-item list-group-item-action">A second
+                                    item</button>
+                                <button type="button" class="list-group-item list-group-item-action">A third button
+                                    item</button>
+                                <button type="button" class="list-group-item list-group-item-action">A third button
+                                    item</button>
+                                <button type="button" class="list-group-item list-group-item-action">A third button
+                                    item</button>
+                                <button type="button" class="list-group-item list-group-item-action">A third button
+                                    item</button>
+                                <button type="button" class="list-group-item list-group-item-action">A third button
+                                    item</button>
+                                <button type="button" class="list-group-item list-group-item-action">A third button
+                                    item</button>
+                                <button type="button" class="list-group-item list-group-item-action">A third button
+                                    item</button>
+                                <button type="button" class="list-group-item list-group-item-action">A third button
+                                    item</button>
+                                <button type="button" class="list-group-item list-group-item-action">A fourth button
+                                    item</button>
+                                <button type="button" class="list-group-item list-group-item-action" disabled>A disabled
+                                    button item</button>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-9">
                         <div class="col">
                             <div class="col">
-                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"> 
+                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                     <option selected value="1" class="text-center">Peta Covid-19 di Indonesia</option>
                                     <option value="2">Statistik</option>
                                     <option value="3">Diagram</option>
                                 </select>
                             </div>
                             <div class="col" style="height: 48vh;">
-                                <div id="map" style="height: 100%;"></div> 
+                                <!-- <div id="map" style="height: 100%;"></div>  -->
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tentang">
+            <div class="container mb-3">
+                <div class="row">
+                    <div class="col-lg-8 p-lg-2">
+                        <div class="row">
+                            <p class="ms-5 mb-0">Tentang</p>
+                            <h1 class="fw-bold text-gradient bg-gradient-primary">Coronavirus (COVID-19)</h1>
+                        </div>
+                        <div class="row my-3 pe-4">
+                            <p>COVID-19 is the infectious disease caused by the most recently discovered coronavirus.
+                                This new virus and disease were unknown before the outbreak began in Wuhan, China, in
+                                December 2019. COVID-19 is now a pandemic affecting many countries globally.
+                            </p>
+                            <p>
+                                Coronaviruses are a large family of viruses which may cause illness in animals or
+                                humans. In humans, several coronaviruses are known to cause respiratory infections
+                                ranging from the common cold to more severe diseases such as Middle East Respiratory
+                                Syndrome (MERS) and Severe Acute Respiratory Syndrome (SARS). The most recently
+                                discovered coronavirus causes coronavirus disease COVID-19.
+                            </p>
+                            <p>
+                                The most common symptoms of COVID-19 are fever, dry cough, and tiredness. Other symptoms
+                                that are less common and may affect some patients include aches and pains, nasal
+                                congestion, headache, conjunctivitis, sore throat, diarrhea, loss of taste or smell or a
+                                rash on skin or discoloration of fingers or toes. These symptoms are usually mild and
+                                begin gradually. Some people become infected but only have very mild symptoms.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-lg-2 covid-img">
+
                     </div>
                 </div>
             </div>
