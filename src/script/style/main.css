@@ -130,6 +130,10 @@ p {
 /* end gejala */
 
 /* pencegahan/ */
+#pencegahan .container-fluid{
+    max-height: 60rem;
+}
+
 #pencegahan .col-lg-3 {
     border-radius: 2vh;
     position: relative;
@@ -154,10 +158,12 @@ p {
     font-size: 15px;
     font-family: sans-serif;
 }
-#pencegahan .col-lg-3:hover {
+#pencegahan .col-lg-3:hover,
+.tab-active {
     box-shadow: inset 0 0 1px 1px hsla(0, 0%, 100%, .9), 0 20px 27px 0 rgba(0, 0, 0, 0.144) !important;
     top: -5px;
     backdrop-filter: saturate(200%) blur(30px);
+    cursor: pointer;
 }
 
 .icon-bandaid{
@@ -179,7 +185,33 @@ p {
 #pencegahan figure{
     margin-top: 30px;
 }
+
+.grey-replace{
+    width: 100%;
+    height: 457px;
+    transform: rotate(148deg) translate(-416px, -177px);
+}
 /* end pencegahan */
+
+/* cuci tangan */
+
+#cuci-tangan .col-lg-2 img {
+    border-radius: 50%;
+    background-color: #fff;
+    width: 100px; 
+    box-shadow: 0px 0px 10px 2px #d6d6d6;
+}
+
+#cuci-tangan .col-lg-2 h4{
+    font-weight: bold;
+    font-size: 1.4rem;
+} 
+
+/* end cuci tangan */
+
+/* footer */
+     
+/* end footer */
 
 /* end header */
 @media (max-width: 992px) {
@@ -206,5 +238,8 @@ p {
 
     .page-header {
         min-height: 80vh;
+    }
+    #pencegahan .container-fluid{
+        max-height: 100%;
     }
 }
