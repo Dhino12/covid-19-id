@@ -210,7 +210,9 @@ p {
 /* end cuci tangan */
 
 /* footer */
-     
+.footer {
+    height: 34rem; 
+}
 /* end footer */
 
 /* end header */
@@ -242,4 +244,5 @@ p {
     #pencegahan .container-fluid{
         max-height: 100%;
     }
+    
 }
