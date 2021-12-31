@@ -17,55 +17,19 @@
 
         <wave-header></wave-header>
 
-        <section class="mx-3">
-            <div class="container pb-0">
-                <div class="row">
-                    <div class="col-lg-9 blur shadow-blur mx-auto py-3" style="margin-top: -8rem; border-radius: 1rem;">
-                        <case-covid-list class="row" id="list-case"></case-covid-list>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <covid-case-wrapper class="mx-3"></covid-case-wrapper>
     </header>
 
     <main>
         <div id="provinsi">
             <div class="container"> 
-                <div class="row mb-2">
-                    <div class="col-md-12 text-center">
-                        <p class="mb-0">Provinsi</p>
-                        <h1 class="fw-bold text-gradient bg-gradient-primary">Yogyakarta</h1>
-                    </div>
-                </div>
+                <title-provinsi class="row mb-2"></title-provinsi>
+
                 <section class="row justify-content-end">
-                    <div class="col-lg-3 blur py-3">
-                        <div class="col shadow-blur text-center py-3" style="border-radius: 2vh;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg"
-                                height="50vh" alt="indonesia flag" class="mb-2">
-                            <h4>Indonesia</h4>
-                        </div>
-                    </div>
+                    <logo-provinsi class="col-lg-3 blur py-3"></logo-provinsi>
+
                     <div class="col-lg-9 me-0 py-3">
-                        <div class="row justify-content-end">
-                            <div class="col-md-3 ms-3 shadow-blur" style="border-radius: 2vh;">
-                                <div class="text-center py-3">
-                                    <p>Terpapar Covid-19</p>
-                                    <h2 class="fw-bold">4000+</h2>
-                                </div>
-                            </div>
-                            <div class="col-md-3 ms-3 shadow-blur" style="border-radius: 2vh;">
-                                <div class="text-center py-3">
-                                    <p>Meninggal Dunia</p>
-                                    <h2 class="fw-bold">4000+</h2>
-                                </div>
-                            </div>
-                            <div class="col-md-3 ms-3 shadow-blur" style="border-radius: 2vh;">
-                                <div class="text-center py-3">
-                                    <p>Pulih dari Covid-19</p>
-                                    <h2 class="fw-bold">4000+</h2>
-                                </div>
-                            </div>
-                        </div>
+                        <provinsi-case-list class="row justify-content-end"></provinsi-case-list>
                     </div>
                 </section>
                 <div class="row mt-lg-5">
