@@ -11,8 +11,12 @@ import './script/components/header/NavbarList';
 import './script/components/header/HeaderContent';
 import './script/components/header/WaveHeader';
 import './script/components/header/case-covid-wrapper';
-
 import './script/components/header/case-covid-list';
+
+import './script/components/main/province/province-title';
+import './script/components/main/province/province-case-list';
+import './script/components/main/province/province-logo';
+import './script/components/main/province/province-list';
 
 import main from './script/view/main.js';
 

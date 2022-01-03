@@ -1,11 +1,11 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin")
-const path = require("path")
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-    entry: "./src/index.js",
+    entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: "bundle.js"
+        filename: 'bundle.js',
     },
     module: {
         rules: [
@@ -13,19 +13,19 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     {
-                        loader: 'style-loader'
+                        loader: 'style-loader',
                     },
                     {
-                        loader: 'css-loader'
-                    }
-                ]
-            }
-        ]
+                        loader: 'css-loader',
+                    },
+                ],
+            },
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/template.html",
-            filename: 'index.html'
-        })
-    ]
-}
+            template: './src/template.html',
+            filename: 'index.html',
+        }),
+    ],
+};
