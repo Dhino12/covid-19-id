@@ -25,34 +25,16 @@
             <div class="container"> 
                 <title-provinsi class="row mb-2"></title-provinsi>
 
-                <section class="row justify-content-end">
-                    <logo-provinsi class="col-lg-3 blur py-3"></logo-provinsi>
-
-                    <div class="col-lg-9 me-0 py-3">
-                        <provinsi-case-list class="row justify-content-end"></provinsi-case-list>
-                    </div>
-                </section>
-                  
+                <province-wrapper class="row justify-content-end"></province-wrapper>
+                
                 <div class="row mt-lg-5">
                     <div class="col-lg-3">
                         <h3 class="text-center">Pilih Provinsi Anda: </h3>
-                        <div class="overflow-scroll" style="height: 50vh;">
-                            <province-list class="list-group"></province-list>
-                        </div>
+                        <province-list class="list-group overflow-scroll" style="height: 50vh;"></province-list>
                     </div>
-                    <div class="col-lg-9">
-                        <div class="col">
-                            <div class="col">
-                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                    <option selected value="1" class="text-center">Peta Covid-19 di Indonesia</option>
-                                    <option value="2">Statistik</option>
-                                    <option value="3">Diagram</option>
-                                </select>
-                            </div>
-                            <div class="col" style="height: 48vh;">
-                                <!-- <div id="map" style="height: 100%;"></div> -->
-                            </div>
-                        </div>
+                    <div class="col-lg-9"> 
+                        <province-cb class="col"></province-cb>
+                        <province-map class="col" style="height: 48vh;"></province-map> 
                     </div>
                 </div>
             </div>
