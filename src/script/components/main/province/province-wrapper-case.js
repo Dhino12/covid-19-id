@@ -1,3 +1,11 @@
+import './items/province-title';
+import './items/province-case-list';
+import './items/province-logo';
+import './items/province-list';
+import './items/province-cb';
+
+import html from './templates/province-wrapper.html';
+
 class ProvinceWrapper extends HTMLElement {
     constructor() {
         super();
@@ -8,12 +16,7 @@ class ProvinceWrapper extends HTMLElement {
     }
 
     render() {
-        this.innerHTML = `
-            <logo-provinsi class="col-lg-3 blur py-3"></logo-provinsi>
-            <div class="col-lg-9 me-0 py-3">
-                <provinsi-case-list class="row justify-content-end"></provinsi-case-list>
-            </div>
-        `;
+        this.innerHTML = html;
     }
 }
 

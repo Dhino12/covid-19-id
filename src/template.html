@@ -12,54 +12,16 @@
 
 <body id="body">
     <header class="position-relative">
-        <nav-list></nav-list>
-        <header-content></header-content>
-
-        <wave-header></wave-header>
-
-        <covid-case-wrapper class="mx-3"></covid-case-wrapper>
+        <covid-case-wrapper></covid-case-wrapper>
     </header>
 
     <main>
-        <div id="provinsi">
-            <div class="container"> 
-                <title-provinsi class="row mb-2"></title-provinsi>
-
-                <province-wrapper class="row justify-content-end"></province-wrapper>
-                
-                <div class="row mt-lg-5">
-                    <div class="col-lg-3">
-                        <h3 class="text-center">Pilih Provinsi Anda: </h3>
-                        <province-list class="list-group overflow-scroll" style="height: 50vh;"></province-list>
-                    </div>
-                    <div class="col-lg-9"> 
-                        <province-cb class="col"></province-cb>
-                        <province-map class="col" style="height: 48vh;"></province-map> 
-                    </div>
-                </div>
-            </div>
-        </div>
+        <province-wrapper id="provinsi"></province-wrapper>
+        
         <div id="tentang">
             <div class="container mb-3">
                 <div class="row">
-                    <div class="col-lg-8 p-lg-2">
-                        <p class="ms-5 mb-0">Tentang</p>
-                        <h1 class="fw-bold text-gradient bg-gradient-primary">Coronavirus (COVID-19)</h1>
-                        <div class="my-3 pe-4">
-                            <p>COVID-19 adalah penyakit yang disebabkan oleh Novel Coronavirus (2019-nCoV), jenis baru
-                                coronavirus yang pada manusia menyebabkan penyakit mulai flu biasa hingga penyakit yang
-                                serius seperti Middle East Respiratory Syndrome (MERS) dan Sindrom Pernapasan Akut
-                                Berat/ Severe Acute Respiratory Syndrome (SARS). Pada 11 Februari 2020, World Health
-                                Organization (WHO) mengumumkan nama penyakit yang disebabkan 2019-nCov, yaitu
-                                Coronavirus Disease (COVID-19).
-                            </p>
-                            <p>
-                                Sebagian besar orang yang tertular COVID-19 akan mengalami gejala ringan hingga sedang,
-                                dan akan pulih tanpa penanganan khusus. Namun, sebagian orang akan mengalami sakit parah
-                                dan memerlukan bantuan medis.
-                            </p>
-                        </div>
-                    </div>
+                    <about-covid class="col-lg-8 p-lg-2"></about-covid>
                     <div class="col-lg-4 p-lg-2 covid-img">
                     </div>
                 </div>
