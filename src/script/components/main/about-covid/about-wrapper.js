@@ -1,3 +1,6 @@
+import './items/about-covid';
+import html from './template/about-wrapper.html';
+
 class AboutWrapper extends HTMLElement {
     constructor() {
         super();
@@ -8,7 +11,7 @@ class AboutWrapper extends HTMLElement {
     }
 
     render() {
-        this.innerHTML = 'html';
+        this.innerHTML = html;
     }
 }
 

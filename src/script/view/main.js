@@ -1,7 +1,8 @@
 // import L from 'leaflet';
 import AboutCovidHandler from './data-handler/about-covid-handler';
+import SymptomHandler from './data-handler/symptom-handler';
 import Province from './data-handler/province-handler';
-import { aboutCovid } from '../data/about-covid-data';
+import { aboutCovid, symptom } from '../data/about-covid-data';
 
 const main = () => {
     /* province */
@@ -15,6 +16,10 @@ const main = () => {
     AboutCovidHandler.titleCovid = aboutCovid.title;
     AboutCovidHandler.contentCovid = aboutCovid.content;
     /* end about-covid */
+
+    /* symptom / gejala */
+    SymptomHandler.dataSymptom = symptom;
+    /* end symptom / gejala */
 
     // const map = L.map('map').setView([51.505, -0.09], 13);
     // L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=T3IS26DZaHNhSyDa1msC', {
