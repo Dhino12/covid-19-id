@@ -1,3 +1,5 @@
+import html from '../templates/province-case-item.html';
+
 class ProvinsiCaseItem extends HTMLElement {
     constructor() {
         super();
@@ -9,12 +11,8 @@ class ProvinsiCaseItem extends HTMLElement {
     }
 
     render() {
-        this.innerHTML = `
-            <div class="text-center py-3">
-                <p>${this._caseItem}</p>
-                <h2 class="fw-bold">4000+</h2>
-            </div>
-        `;
+        this.innerHTML = html;
+        this.querySelector('p').innerText = this._caseItem;
     }
 }
 

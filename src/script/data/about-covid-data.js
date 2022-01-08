@@ -11,39 +11,66 @@ const aboutCovid = {
 };
 
 const infection = {
-        infection: '',
+    infection: ` ini dapat menyebar melalui tetesan kecil (droplet) dari hidung atau mulut pada saat batuk atau bersin. Droplet tersebut
+    kemudian jatuh pada benda di sekitarnya. Kemudian jika ada orang lain menyentuh benda yang sudah terkontaminasi dengan droplet tersebut, lalu orang itu menyentuh mata, hidung atau
+    mulut (segitiga wajah), maka orang itu dapat terinfeksi COVID-19.<br> Seseorang juga bisa terinfeksi COVID-19 ketika tanpa sengaja menghirup droplet dari penderita. Inilah sebabnya
+    mengapa kita penting untuk menjaga jarak hingga kurang lebih satu meter dari orang yang sakit.
+    `,
 };
+
+const wishHand = [
+    {
+        title: 'Menggunakan Sabun',
+        img: './img/hand-1.png',
+    },
+    {
+        title: 'Menggosokan tangan depan',
+        img: './img/hand-2.png',
+    },
+    {
+        title: 'Menggosokan tangan belakang',
+        img: './img/hand-3.png',
+    },
+    {
+        title: 'Menggosokan selaput jari',
+        img: './img/hand-4.png',
+    },
+    {
+        title: 'Cuci dengan air',
+        img: './img/hand-5.png',
+    },
+];
 
 const preventionAdvice = [
     {
-        title: '',
-        img: '',
-        content: '',
+        title: 'Tutup saat batuk',
+        img: './img/prevention-1.png',
+        content: 'Kain penutup wajah Anda dapat melindungi mereka. Penutup wajah mereka dapat melindungi Anda, atau menggunakan masker',
     },
     {
-        title: '',
-        img: '',
-        content: '',
+        title: 'Pakai Masker Saat Keluar',
+        img: './img/prevention-2.png',
+        content: 'Selalu gunakan masker saat berpergian untuk mencegah penyebaran covid-19 virus',
     },
     {
-        title: '',
-        img: '',
-        content: '',
+        title: 'Jaga Jarak\n(Keep Social Distance)',
+        img: './img/prevention-3.png',
+        content: 'Mencaga jarak dengan orang lain saat berada diluar ruangan, hindari kerumunan untuk melindungi anda dan orang banyak',
     },
     {
-        title: '',
-        img: '',
-        content: '',
+        title: 'Cuci tangan secara teratur',
+        img: './img/prevention-4.png',
+        content: 'Sering-seringlah mencuci tangan setidaknya selama 20 detik dengan sabun dan air.',
     },
     {
-        title: '',
-        img: '',
-        content: '',
+        title: 'Jangan sentuh Wajahmu',
+        img: './img/prevention-5.png',
+        content: 'Menghindari tidak menyentuh mata, hidung, dan mulut dengan tangan yang belum dicuci.',
     },
     {
-        title: '',
-        img: '',
-        content: '',
+        title: 'Tetap diRumah aja',
+        img: './img/prevention-6.png',
+        content: 'dengan dirumah aja, anda dapat melindungi orang lain, kerabat, dan diri anda sendiri',
     },
 ];
 
@@ -81,5 +108,5 @@ const symptom = [
 ];
 
 module.exports = {
-    aboutCovid, infection, preventionAdvice, symptom,
+    aboutCovid, infection, preventionAdvice, symptom, wishHand,
 };

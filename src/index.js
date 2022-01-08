@@ -11,6 +11,8 @@ import './script/components/header/case-covid-wrapper';
 import './script/components/main/province/province-wrapper-case';
 import './script/components/main/about-covid/about-wrapper';
 import './script/components/main/symptom/symptom-wrapper';
+import './script/components/main/preventionAdvice/advice-wrapper';
+import './script/components/main/wish-hand/wish-hand-wrapper';
 
 import main from './script/view/main.js';
 
