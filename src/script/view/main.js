@@ -37,7 +37,7 @@ const main = () => {
 
     /* infection description */
     InfectionHandler.querySelector = 'infection-wrapper';
-    InfectionHandler.infectionSetData = infection;
+    InfectionHandler.infectionSetData = infection.infection;
     /* end infection description */
 
     // const map = L.map('map').setView([51.505, -0.09], 13);
