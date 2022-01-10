@@ -1,3 +1,4 @@
+import './items/wish-hand-list';
 import html from './templates/wish-hand-wrapper.html';
 
 class WishHandWrapper extends HTMLElement {

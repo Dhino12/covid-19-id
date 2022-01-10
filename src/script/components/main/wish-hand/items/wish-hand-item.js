@@ -12,6 +12,8 @@ class WishHandItem extends HTMLElement {
 
     render() {
         this.innerHTML = html;
+        this.querySelector('img').src = this._wishHandData.img;
+        this.querySelector('h4').innerText = this._wishHandData.title;
     }
 }
 

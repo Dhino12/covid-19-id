@@ -1,17 +1,18 @@
-// import L from 'leaflet';
+import L from 'leaflet';
 import AboutCovidHandler from './data-handler/about-covid-handler';
-import SymptomHandler from './data-handler/symptom-handler';
-import Province from './data-handler/province-handler';
 import AdviceHandler from './data-handler/advice-hanlder';
+import InfectionHandler from './data-handler/infection-handler';
+import Province from './data-handler/province-handler';
+import SymptomHandler from './data-handler/symptom-handler';
+import WishHandHandler from './data-handler/wish-hand-handler';
 
 import {
     aboutCovid,
     infection,
     preventionAdvice,
     symptom,
+    wishHand,
 } from '../data/about-covid-data';
-
-import InfectionHandler from './data-handler/infection-handler';
 
 const main = () => {
     /* province */
@@ -40,10 +41,15 @@ const main = () => {
     InfectionHandler.infectionSetData = infection.infection;
     /* end infection description */
 
-    // const map = L.map('map').setView([51.505, -0.09], 13);
-    // L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=T3IS26DZaHNhSyDa1msC', {
-    //     attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
-    // }).addTo(map);
+    /* wish-hand */
+    WishHandHandler.querySelector = 'wish-hand-list';
+    WishHandHandler.setDataWishHand = wishHand;
+    /* end wish-hand */
+
+    const map = L.map('map').setView([-3.824181, 115.8191513], 5);
+    L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=T3IS26DZaHNhSyDa1msC', {
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+    }).addTo(map);
 };
 
 export default main;

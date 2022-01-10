@@ -7,7 +7,6 @@ class AdviceList extends HTMLElement {
     }
 
     set advices(adviceCovid) {
-        console.log(adviceCovid);
         this._advices = adviceCovid;
         this.render();
     }

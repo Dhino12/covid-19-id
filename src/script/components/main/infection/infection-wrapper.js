@@ -8,13 +8,14 @@ class InfectionWrapper extends HTMLElement {
 
     set infection(dataInfection) {
         this._infection = dataInfection;
+        this.render();
     }
 
     render() {
         this.innerHTML = html;
         const getIdDesc = this.querySelector('#desc');
-        getIdDesc.innerText += titleInfection;
-        getIdDesc.innerText += this._infection;
+        getIdDesc.innerHTML += titleInfection;
+        getIdDesc.innerHTML += this._infection;
     }
 }
 

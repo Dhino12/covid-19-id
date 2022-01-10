@@ -12,10 +12,11 @@ class WishHandList extends HTMLElement {
 
     render() {
         this.innerHTML = '';
-        this.setAttribute('class', 'row');
+        this.setAttribute('class', 'row justify-content-center');
         this.setAttribute('style', 'margin-top: 4rem;');
         this._wishHandDatas.forEach((data) => {
             const wishHandItem = document.createElement('wish-hand-item');
+            wishHandItem.setAttribute('class', 'col-lg-2');
             wishHandItem.wishHandData = data;
             this.appendChild(wishHandItem);
         });

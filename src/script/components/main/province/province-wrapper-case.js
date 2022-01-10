@@ -3,6 +3,7 @@ import './items/province-case-list';
 import './items/province-logo';
 import './items/province-list';
 import './items/province-cb';
+import './items/province-map';
 
 import html from './templates/province-wrapper.html';
 
