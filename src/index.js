@@ -14,7 +14,7 @@ import './script/components/main/symptom/symptom-wrapper';
 import './script/components/main/preventionAdvice/advice-wrapper';
 import './script/components/main/infection/infection-wrapper';
 import './script/components/main/wish-hand/wish-hand-wrapper';
-import './script/components/main/footer/footer-wrapper';
+import './script/components/footer/footer-wrapper';
 
 import main from './script/view/main.js';
 

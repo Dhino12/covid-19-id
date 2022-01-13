@@ -3,12 +3,14 @@ class ProvinceItem extends HTMLElement {
         super();
     }
 
-    connectedCallback() {
-        this.render();
+    // eslint-disable-next-line class-methods-use-this
+    setNameToCapitalLetters(nameProvince) {
+        return nameProvince.replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase());
     }
 
-    set provinceName(province) {
-        this._province = province;
+    set setProvinceName(province) {
+        this._province = this.setNameToCapitalLetters(province.toLowerCase());
+        this.render();
     }
 
     set clickEvent(event) {

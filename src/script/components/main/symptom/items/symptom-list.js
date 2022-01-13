@@ -6,7 +6,6 @@ class SymptomList extends HTMLElement {
     }
 
     set symptoms(sympotmsCovid) {
-        console.log(`data symptoms : ${sympotmsCovid}`);
         this._symptoms = sympotmsCovid;
         this.render();
     }

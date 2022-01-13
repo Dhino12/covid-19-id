@@ -1,3 +1,5 @@
+import DataProvince from '../../data/data-province';
+
 /* eslint-disable prefer-destructuring */
 class Province {
     constructor() {
@@ -7,8 +9,11 @@ class Province {
         this.provinceNameTitle = '';
     }
 
-    listProvince() {
+    listProvince(dataProvinceList) {
+        this._province.setProvinceNames = dataProvinceList;
+        console.log(this._provinceItem);
         if (document.querySelector('.activee') === null) {
+            console.log('masuk');
             this._provinceItem[0].classList.add('activee');
             this.provinceNameTitle = this._provinceItem[0].innerText;
         }

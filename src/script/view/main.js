@@ -12,13 +12,16 @@ import {
     preventionAdvice,
     symptom,
     wishHand,
-} from '../data/about-covid-data';
+} from '../data/data-about-covid';
+import ProvinceControler from '../controler/province-controler';
+import DataProvince from '../data/data-province';
 
 const main = () => {
     /* province */
-    const ProvinceIndonesia = new Province();
-    ProvinceIndonesia.listProvince();
-    ProvinceIndonesia.provinceName();
+    const provinceModel = new DataProvince();
+    const provinceView = new Province();
+    const provinceController = new ProvinceControler(provinceModel, provinceView);
+    provinceController.setDataNameProvince();
     /* end-province */
 
     /* about-covid */

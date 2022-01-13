@@ -5,18 +5,18 @@ class ProvinceList extends HTMLElement {
         super();
     }
 
-    connectedCallback() {
-        this.provinces = ['Jakarta', 'Yogyakarta', 'Bandung', 'Papua', 'Sulawesi', 'Kalimantan', 'Sumatra', 'Nusa Tenggara Timur', 'Nusa Tenggara Barat', 'Bali', 'Riau', 'Surabaya'];
+    set setProvinceNames(names) {
+        this._provinceNames = names;
         this.render();
     }
 
     render() {
         this.innerHTML = '';
 
-        this.provinces.forEach((province) => {
+        this._provinceNames.forEach((province) => {
             const createButton = document.createElement('province-item');
             createButton.setAttribute('class', 'list-group-item list-group-item-action');
-            createButton.provinceName = province;
+            createButton.setProvinceName = province.provinsi;
             this.appendChild(createButton);
         });
     }
