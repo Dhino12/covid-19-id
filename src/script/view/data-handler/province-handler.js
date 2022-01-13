@@ -1,5 +1,3 @@
-import DataProvince from '../../data/data-province';
-
 /* eslint-disable prefer-destructuring */
 class Province {
     constructor() {
