@@ -1,33 +1,55 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable semi */
 /* eslint-disable prefer-destructuring */
-class Province {
+import ComponentQuerySelector from '../selector/ComponentQuerySelector';
+
+class Province extends ComponentQuerySelector {
+    #dataProvinceList = [];
+
     constructor() {
-        this._provinceItem = document.querySelectorAll('province-item');
+        super();
         this._province = document.getElementsByTagName('province-list')[0];
-        this._provinceName = document.querySelector('title-provinsi div h1');
         this.provinceNameTitle = '';
     }
 
-    listProvince(dataProvinceList) {
-        this._province.setProvinceNames = dataProvinceList;
-        console.log(this._provinceItem);
-        if (document.querySelector('.activee') === null) {
-            console.log('masuk');
-            this._provinceItem[0].classList.add('activee');
-            this.provinceNameTitle = this._provinceItem[0].innerText;
+    dataReceiver(datas) {
+        this.#dataProvinceList = datas;
+    }
+
+    listProvinceName() {
+        this._province.setProvinceNames = this.#dataProvinceList;
+        const { province, provinceItem, activeeClass } = this.getProvinceQuerySelector();
+
+        if (activeeClass === null) {
+            provinceItem[0].classList.add('activee');
+            this.provinceNameTitle = provinceItem[0].innerText;
+            this.provinceCase(this.#dataProvinceList[0]);
         }
 
-        this._province.addEventListener('click', (e) => {
-            this._provinceItem.forEach((element) => {
+        province.addEventListener('click', (e) => {
+            provinceItem.forEach((element) => {
                 element.classList.remove('activee');
             });
             this.provinceNameTitle = e.target.innerText;
             e.target.classList.add('activee');
-            this.provinceName();
+            this.provinceTitleName();
+
+            const searchProvinceCase = this.#dataProvinceList.filter(
+                (prov) => prov.provinsi.toLowerCase() === e.target.innerText.toLowerCase(),
+            )[0];
+            this.provinceCase(searchProvinceCase);
         });
     }
 
-    provinceName() {
-        this._provinceName.innerText = this.provinceNameTitle;
+    provinceTitleName() {
+        const { provinceName } = this.getProvinceQuerySelector();
+        provinceName.innerText = this.provinceNameTitle;
+    }
+
+    provinceCase(caseCovid) {
+        const { provinceCaseList } = this.getProvinceQuerySelector();
+        provinceCaseList.provinceCases = caseCovid;
     }
 }
 

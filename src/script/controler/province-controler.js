@@ -1,12 +1,17 @@
 class ProvinceControler {
+    #dataAllProvince = [];
+
     constructor(provinceDatas, provinceView) {
         this.provinceDatas = provinceDatas;
         this.provinceView = provinceView;
     }
 
-    async setDataNameProvince() {
-        const dataAllProvince = await this.provinceDatas.dataAllProvince();
-        this.provinceView.listProvince(dataAllProvince);
+    async setNameProvince() {
+        this.#dataAllProvince = await this.provinceDatas.dataAllProvince();
+
+        this.provinceView.dataReceiver(this.#dataAllProvince.map((province) => province));
+        this.provinceView.listProvinceName();
+        this.provinceView.provinceTitleName();
     }
 }
 

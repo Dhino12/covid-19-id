@@ -16,12 +16,13 @@ import {
 import ProvinceControler from '../controler/province-controler';
 import DataProvince from '../data/data-province';
 
-const main = () => {
+const main = async () => {
     /* province */
     const provinceModel = new DataProvince();
     const provinceView = new Province();
     const provinceController = new ProvinceControler(provinceModel, provinceView);
-    provinceController.setDataNameProvince();
+    await provinceController.setNameProvince();
+    await provinceController.setCaseProvince();
     /* end-province */
 
     /* about-covid */

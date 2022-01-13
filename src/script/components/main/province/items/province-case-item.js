@@ -5,14 +5,19 @@ class ProvinsiCaseItem extends HTMLElement {
         super();
     }
 
-    set caseItem(caseCovid) {
-        this._caseItem = caseCovid;
+    set caseItemTitle(caseCovidTitle) {
+        this._caseItem = caseCovidTitle;
+    }
+
+    set caseTotal(caseCovidTotal) {
+        this._caseCovid = caseCovidTotal;
         this.render();
     }
 
     render() {
         this.innerHTML = html;
         this.querySelector('p').innerText = this._caseItem;
+        this.querySelector('h2').innerText = this._caseCovid;
     }
 }
 
