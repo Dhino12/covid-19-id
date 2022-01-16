@@ -1,11 +1,16 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable semi */
 /* eslint-disable prefer-destructuring */
+
 import ComponentQuerySelector from '../selector/ComponentQuerySelector';
+import provinceGeoJson from './province-geojson/provinceGeoJson';
 
 class Province extends ComponentQuerySelector {
     #dataProvinceList = [];
+
+    #geoJson = [];
 
     constructor() {
         super();
@@ -15,6 +20,10 @@ class Province extends ComponentQuerySelector {
 
     dataReceiver(datas) {
         this.#dataProvinceList = datas;
+    }
+
+    dataReceiverGeoJson(datas) {
+        this.#geoJson = datas;
     }
 
     listProvinceName() {
@@ -40,6 +49,8 @@ class Province extends ComponentQuerySelector {
             )[0];
             this.provinceCase(searchProvinceCase);
         });
+
+        provinceGeoJson(this.#geoJson)
     }
 
     provinceTitleName() {
