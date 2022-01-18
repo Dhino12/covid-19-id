@@ -8,8 +8,25 @@ class ProvinceControler {
         this.provinceView = provinceView;
     }
 
+    #sortProvinceName(datas) {
+        return datas.sort((a, b) => {
+            const nameProvA = a.provinsi.toUpperCase();
+            const nameProvB = b.provinsi.toUpperCase();
+
+            if (nameProvA < nameProvB) {
+                return -1;
+            }
+
+            if (nameProvA > nameProvB) {
+                return 1;
+            }
+            return 0;
+        });
+    }
+
     async getNameProvince() {
         this.#dataAllProvince = await this.provinceDatas.dataAllProvince();
+        this.#dataAllProvince = this.#sortProvinceName(this.#dataAllProvince);
         this.provinceView.dataReceiver(this.#dataAllProvince);
         this.provinceView.listProvinceName();
         this.provinceView.provinceTitleName();
