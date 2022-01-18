@@ -14,7 +14,6 @@ class ProvinsiCaseList extends HTMLElement {
 
     set provinceCases(cases) {
         this.#casesCovid = cases;
-        console.log(cases);
         this.render();
     }
 
@@ -27,7 +26,6 @@ class ProvinsiCaseList extends HTMLElement {
             caseItemElement.caseItemTitle = caseCovid;
             if (index === 0) {
                 caseItemElement.caseTotal = this.#casesCovid.kasus;
-                console.log(this.#casesCovid.kasus);
             } else if (index === 1) {
                 caseItemElement.caseTotal = this.#casesCovid.sembuh;
             } else {
