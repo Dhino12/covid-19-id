@@ -11,7 +11,7 @@ class DataProvince {
     }
 
     async dataGeoJson() {
-        const datasProvince = await axios.get('./geojson/provinceName.json');
+        const datasProvince = await axios.get('./geojson/provincesName/provinceName.json');
         const nameProvinces = await datasProvince.data;
         return nameProvinces.map(async (nameProvince) => {
             const geoJsonProvince = await axios.get(`./geojson/${nameProvince.name}`);
