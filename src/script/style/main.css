@@ -98,6 +98,10 @@ p {
     height: 180px;
 }
 
+province-list {
+    cursor: pointer;
+}
+
 /* gejala */
 #gejala .col-lg-3 {
     border-radius: 2vh;
