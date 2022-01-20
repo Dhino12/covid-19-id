@@ -10,7 +10,7 @@ module.exports = merge(common, {
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    presents: ['@babel/presents-env'],
+                    presets: ['@babel/preset-env'],
                 },
             }],
         }],

@@ -16,8 +16,6 @@ import './script/components/main/infection/infection-wrapper';
 import './script/components/main/wish-hand/wish-hand-wrapper';
 import './script/components/footer/footer-wrapper';
 
-import './script/components/tableMap/table-map';
-
 import main from './script/view/main.js';
 
 document.addEventListener('DOMContentLoaded', main);
