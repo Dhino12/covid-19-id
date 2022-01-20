@@ -1,4 +1,3 @@
-import L from 'leaflet';
 import AboutCovidHandler from './data-handler/about-covid-handler';
 import AdviceHandler from './data-handler/advice-hanlder';
 import InfectionHandler from './data-handler/infection-handler';
@@ -15,14 +14,23 @@ import {
 } from '../data/data-about-covid';
 import ProvinceControler from '../controler/province-controler';
 import DataProvince from '../data/data-province';
+import IndoCovidHandler from './data-handler/indo-covid-handler';
+import IndoCaseController from '../controler/indo-case-controller';
 
 const main = async () => {
+    const models = new DataProvince();
+
+    /* Case Covid Indonesia */
+    const indoCovid = new IndoCovidHandler();
+    const indoCaseController = new IndoCaseController(models, indoCovid);
+    indoCaseController.getDataCovidIndo();
+
     /* province */
-    const provinceModel = new DataProvince();
     const provinceView = new Province();
-    const provinceController = new ProvinceControler(provinceModel, provinceView);
-    await provinceController.setNameProvince();
-    await provinceController.setCaseProvince();
+    const provinceController = new ProvinceControler(models, provinceView);
+    await provinceController.getProvinceGeoJson();
+    await provinceController.getNameProvince();
+    // await provinceController.setCaseProvince();
     /* end-province */
 
     /* about-covid */
@@ -50,10 +58,6 @@ const main = async () => {
     WishHandHandler.setDataWishHand = wishHand;
     /* end wish-hand */
 
-    const map = L.map('map').setView([-3.824181, 115.8191513], 5);
-    L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=T3IS26DZaHNhSyDa1msC', {
-        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
-    }).addTo(map);
 };
 
 export default main;
