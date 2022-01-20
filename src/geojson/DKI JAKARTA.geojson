@@ -26,7 +26,7 @@
   "properties": {
     "ID": 14,
     "kode": 31,
-    "Propinsi": "DKI JAKARTA",
+    "provinsi": "DKI JAKARTA",
     "SUMBER": "Peta Dasar BAKOSURTANAL Skala 1 : 250.000"
   }
 }

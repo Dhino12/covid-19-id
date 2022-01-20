@@ -70,7 +70,7 @@
   "properties": {
     "ID": 18,
     "kode": 51,
-    "Propinsi": "BALI",
+    "provinsi": "BALI",
     "SUMBER": "Peta Dasar BAKOSURTANAL Skala 1 : 250.000"
   }
 }

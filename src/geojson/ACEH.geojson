@@ -223,7 +223,7 @@
   "properties": {
     "ID": 32,
     "kode": 11,
-    "Propinsi": "DI. ACEH",
+    "provinsi": "ACEH",
     "SUMBER": "Peta Dasar BAKOSURTANAL Skala 1 : 250.000"
   }
 }
