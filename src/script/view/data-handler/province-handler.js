@@ -4,139 +4,249 @@
 /* eslint-disable semi */
 /* eslint-disable prefer-destructuring */
 import L from 'leaflet';
-import ComponentQuerySelector from '../selector/ComponentQuerySelector'; 
+import ComponentQuerySelector from '../selector/ComponentQuerySelector';
 
 class Province extends ComponentQuerySelector {
-    #dataProvinceList = [];
+  #dataProvinceList = []; // list data from API
 
-    #geoJson = [];
+  #dataGeo = []; // data geo from leaflet
 
-    constructor() {
-        super();
-        this._province = document.getElementsByTagName('province-list')[0];
-        this.provinceNameTitle = '';
+  #geoJson = []; // map GeoJson
+
+  constructor() {
+    super();
+    this._province = document.getElementsByTagName('province-list')[0];
+    this.provinceNameTitle = '';
+  }
+
+  dataReceiver(datas) {
+    this.#dataProvinceList = datas;
+  }
+
+  dataReceiverGeoJson(datas) {
+    this.#geoJson = datas;
+  }
+
+  #setNameToCapitalLetters(nameProvince) {
+    return nameProvince.replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase());
+  }
+
+  #provinceListClicked = (e) => {
+    const { provinceItem } = this.getProvinceQuerySelector();
+    provinceItem.forEach((element) => {
+      element.classList.remove('activee');
+    });
+    e.target.classList.add('activee');
+    this.provinceTitleName(e.target.innerText);
+
+    const searchProvinceCase = this.#dataProvinceList.filter(
+      (prov) => prov.provinsi.toLowerCase() === e.target.innerText.toLowerCase(),
+    )[0];
+
+    const thiIdItem = e.target.getAttribute('data-id');
+    const set = this.#dataGeo[thiIdItem];
+    set.eachLayer((f) => {
+      f.openPopup();
+    });
+
+    this.provinceCase(searchProvinceCase);
+  };
+
+  listProvinceName() {
+    this._province.setProvinceNames = this.#dataProvinceList;
+    const { provinceList, provinceItem, activeeClass } = this.getProvinceQuerySelector();
+
+    if (activeeClass === null) {
+      provinceItem[0].classList.add('activee');
+      this.provinceTitleName(provinceItem[0].innerText);
+      this.provinceCase(this.#dataProvinceList[0]);
     }
 
-    dataReceiver(datas) {
-        this.#dataProvinceList = datas;
+    provinceList.addEventListener('click', this.#provinceListClicked);
+
+    this.provinceGeoJson(this.#geoJson);
+  }
+
+  provinceTitleName(name) {
+    const { provinceName } = this.getProvinceQuerySelector();
+    provinceName.innerText = name;
+  }
+
+  provinceCase(caseCovid) {
+    const { provinceCaseList } = this.getProvinceQuerySelector();
+    provinceCaseList.provinceCases = caseCovid;
+  }
+
+  #searchCaseCovid = (dataProv, dataMapProv) => {
+    const {
+        provinsi,
+        kasus,
+        sembuh,
+        meninggal,
+        penambahan,
+    } = dataProv.filter(
+      (provData) => provData.provinsi === dataMapProv,
+    )[0];
+    return {
+      provinsi,
+      kasus,
+      sembuh,
+      meninggal,
+      penambahan,
+    };
+  };
+
+  #getColor = (positive) => {
+    let color = '#0d0';
+    if (positive > 1000) {
+      color = '#222';
+    } else if (positive > 500) {
+      color = '#555';
+    } else if (positive > 200) {
+      color = '#f00';
+    } else if (positive > 100) {
+      color = '#f90';
+    } else if (positive > 50) {
+      color = '#09d';
+    } else if (positive > 20) {
+      color = '#09d';
     }
+    return color;
+  };
 
-    dataReceiverGeoJson(datas) {
-        this.#geoJson = datas;
+  #styleMap = (f) => {
+    const { penambahan } = this.#searchCaseCovid(
+      this.#dataProvinceList,
+      f.properties.provinsi,
+    );
+    return {
+      weight: 2,
+      opacity: 0.6,
+      color: 'white',
+      fillOpacity: 0.7,
+      fillColor: this.#getColor(penambahan.positif),
+    };
+  };
+
+  #highlightFeature = (e) => {
+    const layer = e.target;
+    layer.setStyle({
+      weight: 2,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.7,
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+      layer.bringToFront();
     }
+  };
 
-    #provinceListClicked = (e) => {
-        const { provinceItem } = this.getProvinceQuerySelector();
-        provinceItem.forEach((element) => {
-            element.classList.remove('activee');
-        });
-        this.provinceNameTitle = e.target.innerText;
-        e.target.classList.add('activee');
-        this.provinceTitleName();
+  #provinceMapClicked = (e) => {
+    const { provinceItem } = this.getProvinceQuerySelector();
+    const provinceMap = e.target.feature.properties.provinsi;
+    const provItem = {};
+    provinceItem.forEach((data, index) => {
+      if (data.innerText.toUpperCase() === provinceMap) {
+        provItem.component = data;
+        provItem.data = this.#dataProvinceList[index];
+      }
+      data.classList.remove('activee');
+    });
+    this.provinceCase(provItem.data);
+    this.provinceTitleName(
+      this.#setNameToCapitalLetters(provItem.data.provinsi.toLowerCase()),
+    );
+    provItem.component.classList.add('activee');
+  };
 
-        const searchProvinceCase = this.#dataProvinceList.filter(
-            (prov) => prov.provinsi.toLowerCase() === e.target.innerText.toLowerCase(),
-        )[0];
-        this.provinceCase(searchProvinceCase);
-    }
+  #resetHighlight = (e) => {
+    const layer = e.target;
+    layer.setStyle({
+      weight: 2,
+      opacity: 1,
+      color: 'white',
+      dashArray: '3',
+      fillOpacity: 0.7,
+    });
+  };
 
-    listProvinceName() {
-        this._province.setProvinceNames = this.#dataProvinceList;
-        const { province, provinceItem, activeeClass } = this.getProvinceQuerySelector();
+  #onEachFeature = (f, layer) => {
+    layer.on({
+      mouseover: this.#highlightFeature,
+      mouseout: this.#resetHighlight,
+      click: this.#provinceMapClicked,
+    });
+    const { provinsi, penambahan } = this.#searchCaseCovid(
+      this.#dataProvinceList,
+      f.properties.provinsi,
+    );
 
-        if (activeeClass === null) {
-            provinceItem[0].classList.add('activee');
-            this.provinceNameTitle = provinceItem[0].innerText;
-            this.provinceCase(this.#dataProvinceList[0]);
-        }
-
-        province.addEventListener('click', this.#provinceListClicked);
-
-        this.provinceGeoJson(this.#geoJson)
-    }
-
-    provinceTitleName() {
-        const { provinceName } = this.getProvinceQuerySelector();
-        provinceName.innerText = this.provinceNameTitle;
-    }
-
-    provinceCase(caseCovid) {
-        const { provinceCaseList } = this.getProvinceQuerySelector();
-        provinceCaseList.provinceCases = caseCovid;
-    }
-
-    #highlightFeature = (e) => {
-        const layer = e.target;
-        layer.setStyle({
-            weight: 5,
-            color: '#666',
-            dashArray: '',
-            fillOpacity: 0.7,
-        });
-
-        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-            layer.bringToFront();
-        }
-    }
-
-    #resetHighlight = (e) => {
-        const layer = e.target;
-        layer.setStyle({
-            weight: 2,
-            opacity: 1,
-            color: 'white',
-            dashArray: '3',
-            fillOpacity: 0.7,
-        });
-    }
-
-    #onEachFeature = (f, layer) => {
-        layer.on({
-            mouseover: this.#highlightFeature,
-            mouseout: this.#resetHighlight,
-        });
-        const province = f.properties.provinsi
-        const {
-            provinsi,
-            kasus,
-            sembuh,
-            meninggal,
-        } = this.#dataProvinceList.filter((provData) => province === provData.provinsi)[0];
-        const table = `
+    const table = `
             <table>
                 <tr>
-                    <td><h6>${provinsi}</h6></td>
+                    <td colspan="2"><h6>${provinsi}</h6></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><p style="font-size:11px; margin:0;">Kasus Covid-19 Hari ini </p></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Positif</td>
-                    <td>${kasus}</td>
+                    <td>${penambahan.positif}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Sembuh</td>
-                    <td>${sembuh}</td>
+                    <td>${penambahan.sembuh}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Meninggal</td>
-                    <td>${meninggal}</td>
+                    <td>${penambahan.meninggal}</td>
                 </tr>
             </table>
         `;
-        layer.bindPopup(table);
-        // layer.bindPopup(popup)
-    }
+    layer.bindPopup(table);
+    // layer.bindPopup(popup)
+  };
 
-    provinceGeoJson(dataGeo) {
-        const map = L.map('map').setView([-3.824181, 115.8191513], 5);
+  provinceGeoJson(dataGeo) {
+    const map = L.map('map').setView([-3.824181, 115.8191513], 5);
 
-        dataGeo.forEach(async (provinceGeo) => {
-            L.geoJSON(await provinceGeo, {
-                onEachFeature: this.#onEachFeature,
-            }).addTo(map);
-        });
-    }
+    const legend = L.control({ position: 'bottomright' });
+    legend.onAdd = (mapProv) => {
+      const div = L.DomUtil.create('div', 'info-legend');
+      const grades = [0, 20, 50, 100, 200, 500];
+      const labels = [];
+      let form = 0;
+      let to = 0;
+
+      grades.forEach((value, index) => {
+        form = grades[index];
+        to = grades[index + 1];
+        labels.push(
+          `<i style="background: ${this.#getColor(
+            form + 1,
+          )}; padding: 2px; color:white; font-weight:bold; font-size:14px;"> ${form} ${
+            to ? `&ndash; ${to}` : '+'
+          }`,
+        );
+      });
+      console.log(mapProv);
+      div.innerHTML = labels.join('<br>');
+      return div;
+    };
+    legend.addTo(map);
+
+    dataGeo.forEach(async (provinceGeo) => {
+      const tmpGeoJson = L.geoJSON(await provinceGeo, {
+        onEachFeature: this.#onEachFeature,
+        style: this.#styleMap,
+      }).addTo(map);
+      this.#dataGeo.push(tmpGeoJson);
+    });
+  }
 }
 
 export default Province;
