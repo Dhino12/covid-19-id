@@ -5,6 +5,10 @@ class CaseCovidItem extends HTMLElement {
 
     set itemCovid(item) {
         this._itemCovid = item;
+    }
+
+    set dataCovidItem(item) {
+        this._covidIndo = `${item}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
         this.render();
     }
 
@@ -14,7 +18,7 @@ class CaseCovidItem extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <h1 class="fw-bold text-gradient bg-gradient-primary">4000+</h1>
+            <h1 class="fw-bold text-gradient bg-gradient-primary">${this._covidIndo}</h1>
             <p>${this._itemCovid}</p>
         `;
     }
