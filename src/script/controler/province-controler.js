@@ -29,7 +29,6 @@ class ProvinceControler {
         this.#dataAllProvince = this.#sortProvinceName(this.#dataAllProvince);
         this.provinceView.dataReceiver(this.#dataAllProvince);
         this.provinceView.listProvinceName();
-        this.provinceView.provinceTitleName();
     }
 
     async getProvinceGeoJson() {
