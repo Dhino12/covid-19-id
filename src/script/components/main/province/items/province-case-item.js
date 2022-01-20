@@ -17,7 +17,7 @@ class ProvinsiCaseItem extends HTMLElement {
     render() {
         this.innerHTML = html;
         this.querySelector('p').innerText = this._caseItem;
-        this.querySelector('h2').innerText = this._caseCovid;
+        this.querySelector('h2').innerText = `${this._caseCovid}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
 }
 
