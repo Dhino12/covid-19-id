@@ -57,7 +57,6 @@ const main = async () => {
     WishHandHandler.querySelector = 'wish-hand-list';
     WishHandHandler.setDataWishHand = wishHand;
     /* end wish-hand */
-
 };
 
 export default main;

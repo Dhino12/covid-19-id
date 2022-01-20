@@ -7,7 +7,7 @@ function highlightFeature(e) {
         color: '#666',
         dashArray: '',
         fillOpacity: 0.7,
-    })
+    });
 
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();

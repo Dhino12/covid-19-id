@@ -19,6 +19,12 @@ class DataProvince {
             return allDataProvince;
         });
     }
+
+    async dataCaseIndonesia() {
+        const datas = await axios(`${this.#API_PROV}`);
+        const caseCovid = await datas.data;
+        return caseCovid;
+    }
 }
 
 export default DataProvince;
