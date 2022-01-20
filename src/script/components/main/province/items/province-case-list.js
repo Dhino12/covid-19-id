@@ -5,7 +5,7 @@ class ProvinsiCaseList extends HTMLElement {
 
     constructor() {
         super();
-        this._caseCovid = ['Terpapar Covid-19', 'Pulih dari Covid-19', 'Meninggal Dunia'];
+        this._caseCovid = ['Total Positif', 'Total Sembuh', 'Total Meninggal'];
     }
 
     connectedCallback() {
