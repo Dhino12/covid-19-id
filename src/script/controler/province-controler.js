@@ -8,6 +8,7 @@ class ProvinceControler {
         this.provinceView = provinceView;
     }
 
+    // eslint-disable-next-line class-methods-use-this
     #sortProvinceName(datas) {
         return datas.sort((a, b) => {
             const nameProvA = a.provinsi.toUpperCase();
