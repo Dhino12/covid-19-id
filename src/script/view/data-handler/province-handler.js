@@ -1,8 +1,3 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable array-callback-return */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable semi */
-/* eslint-disable prefer-destructuring */
 import L from "leaflet";
 import ComponentQuerySelector from "../selector/ComponentQuerySelector";
 
@@ -230,7 +225,6 @@ class Province extends ComponentQuerySelector {
           }`
         );
       });
-      console.log(mapProv);
       div.innerHTML = labels.join("<br>");
       return div;
     };

@@ -6,7 +6,6 @@ class IndoCovidHandler extends ComponentQuerySelector {
     }
 
     setCovidData(caseCovid) {
-        console.log(caseCovid);
         const caseList = this.getIndoCovidSelector();
         caseList.dataCovid = caseCovid;
     }
