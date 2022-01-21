@@ -3,20 +3,20 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable semi */
 /* eslint-disable prefer-destructuring */
-import L from 'leaflet';
-import ComponentQuerySelector from '../selector/ComponentQuerySelector';
+import L from "leaflet";
+import ComponentQuerySelector from "../selector/ComponentQuerySelector";
 
 class Province extends ComponentQuerySelector {
   #dataProvinceList = []; // list data from API
 
-  #dataGeo = []; // data geo from leaflet
+  #dataGeoObj = {}; // dataGeoObj from leaflet based on provinceName
 
-  #geoJson = []; // map GeoJson
+  #dataGeoJson = []; // map GeoJson
 
   constructor() {
     super();
-    this._province = document.getElementsByTagName('province-list')[0];
-    this.provinceNameTitle = '';
+    this._province = document.getElementsByTagName("province-list")[0];
+    this.provinceNameTitle = "";
   }
 
   dataReceiver(datas) {
@@ -24,27 +24,29 @@ class Province extends ComponentQuerySelector {
   }
 
   dataReceiverGeoJson(datas) {
-    this.#geoJson = datas;
+    this.#dataGeoJson = datas;
   }
 
   #setNameToCapitalLetters(nameProvince) {
-    return nameProvince.replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase());
+    return nameProvince.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+      letter.toUpperCase()
+    );
   }
 
   #provinceListClicked = (e) => {
     const { provinceItem } = this.getProvinceQuerySelector();
     provinceItem.forEach((element) => {
-      element.classList.remove('activee');
+      element.classList.remove("activee");
     });
-    e.target.classList.add('activee');
+    e.target.classList.add("activee");
     this.provinceTitleName(e.target.innerText);
 
     const searchProvinceCase = this.#dataProvinceList.filter(
-      (prov) => prov.provinsi.toLowerCase() === e.target.innerText.toLowerCase(),
+      (prov) => prov.provinsi.toLowerCase() === e.target.innerText.toLowerCase()
     )[0];
 
-    const thiIdItem = e.target.getAttribute('data-id');
-    const set = this.#dataGeo[thiIdItem];
+    const thiIdItem = e.target.getAttribute("data-id");
+    const set = this.#dataGeoObj[thiIdItem];
     set.eachLayer((f) => {
       f.openPopup();
     });
@@ -54,17 +56,18 @@ class Province extends ComponentQuerySelector {
 
   listProvinceName() {
     this._province.setProvinceNames = this.#dataProvinceList;
-    const { provinceList, provinceItem, activeeClass } = this.getProvinceQuerySelector();
+    const { provinceList, provinceItem, activeeClass } =
+      this.getProvinceQuerySelector();
 
     if (activeeClass === null) {
-      provinceItem[0].classList.add('activee');
+      provinceItem[0].classList.add("activee");
       this.provinceTitleName(provinceItem[0].innerText);
       this.provinceCase(this.#dataProvinceList[0]);
     }
 
-    provinceList.addEventListener('click', this.#provinceListClicked);
+    provinceList.addEventListener("click", this.#provinceListClicked);
 
-    this.provinceGeoJson(this.#geoJson);
+    this.provinceGeoJson(this.#dataGeoJson);
   }
 
   provinceTitleName(name) {
@@ -78,14 +81,8 @@ class Province extends ComponentQuerySelector {
   }
 
   #searchCaseCovid = (dataProv, dataMapProv) => {
-    const {
-        provinsi,
-        kasus,
-        sembuh,
-        meninggal,
-        penambahan,
-    } = dataProv.filter(
-      (provData) => provData.provinsi === dataMapProv,
+    const { provinsi, kasus, sembuh, meninggal, penambahan } = dataProv.filter(
+      (provData) => provData.provinsi === dataMapProv
     )[0];
     return {
       provinsi,
@@ -97,19 +94,19 @@ class Province extends ComponentQuerySelector {
   };
 
   #getColor = (positive) => {
-    let color = '#0d0';
+    let color = "#0d0";
     if (positive > 1000) {
-      color = '#222';
+      color = "#222";
     } else if (positive > 500) {
-      color = '#555';
+      color = "#555";
     } else if (positive > 200) {
-      color = '#f00';
+      color = "#f00";
     } else if (positive > 100) {
-      color = '#f90';
+      color = "#f90";
     } else if (positive > 50) {
-      color = '#09d';
+      color = "#09d";
     } else if (positive > 20) {
-      color = '#09d';
+      color = "#09d";
     }
     return color;
   };
@@ -117,12 +114,12 @@ class Province extends ComponentQuerySelector {
   #styleMap = (f) => {
     const { penambahan } = this.#searchCaseCovid(
       this.#dataProvinceList,
-      f.properties.provinsi,
+      f.properties.provinsi
     );
     return {
       weight: 2,
       opacity: 0.6,
-      color: 'white',
+      color: "white",
       fillOpacity: 0.7,
       fillColor: this.#getColor(penambahan.positif),
     };
@@ -132,8 +129,8 @@ class Province extends ComponentQuerySelector {
     const layer = e.target;
     layer.setStyle({
       weight: 2,
-      color: '#666',
-      dashArray: '',
+      color: "#666",
+      dashArray: "",
       fillOpacity: 0.7,
     });
 
@@ -151,13 +148,13 @@ class Province extends ComponentQuerySelector {
         provItem.component = data;
         provItem.data = this.#dataProvinceList[index];
       }
-      data.classList.remove('activee');
+      data.classList.remove("activee");
     });
     this.provinceCase(provItem.data);
     this.provinceTitleName(
-      this.#setNameToCapitalLetters(provItem.data.provinsi.toLowerCase()),
+      this.#setNameToCapitalLetters(provItem.data.provinsi.toLowerCase())
     );
-    provItem.component.classList.add('activee');
+    provItem.component.classList.add("activee");
   };
 
   #resetHighlight = (e) => {
@@ -165,8 +162,8 @@ class Province extends ComponentQuerySelector {
     layer.setStyle({
       weight: 2,
       opacity: 1,
-      color: 'white',
-      dashArray: '3',
+      color: "white",
+      dashArray: "3",
       fillOpacity: 0.7,
     });
   };
@@ -179,7 +176,7 @@ class Province extends ComponentQuerySelector {
     });
     const { provinsi, penambahan } = this.#searchCaseCovid(
       this.#dataProvinceList,
-      f.properties.provinsi,
+      f.properties.provinsi
     );
 
     const table = `
@@ -212,11 +209,11 @@ class Province extends ComponentQuerySelector {
   };
 
   provinceGeoJson(dataGeo) {
-    const map = L.map('map').setView([-3.824181, 115.8191513], 5);
+    const map = L.map("map").setView([-3.824181, 115.8191513], 5);
 
-    const legend = L.control({ position: 'bottomright' });
+    const legend = L.control({ position: "bottomright" });
     legend.onAdd = (mapProv) => {
-      const div = L.DomUtil.create('div', 'info-legend');
+      const div = L.DomUtil.create("div", "info-legend");
       const grades = [0, 20, 50, 100, 200, 500];
       const labels = [];
       let form = 0;
@@ -227,24 +224,27 @@ class Province extends ComponentQuerySelector {
         to = grades[index + 1];
         labels.push(
           `<i style="background: ${this.#getColor(
-            form + 1,
+            form + 1
           )}; padding: 2px; color:white; font-weight:bold; font-size:14px;"> ${form} ${
-            to ? `&ndash; ${to}` : '+'
-          }`,
+            to ? `&ndash; ${to}` : "+"
+          }`
         );
       });
       console.log(mapProv);
-      div.innerHTML = labels.join('<br>');
+      div.innerHTML = labels.join("<br>");
       return div;
     };
     legend.addTo(map);
 
     dataGeo.forEach(async (provinceGeo) => {
-      const tmpGeoJson = L.geoJSON(await provinceGeo, {
-        onEachFeature: this.#onEachFeature,
-        style: this.#styleMap,
-      }).addTo(map);
-      this.#dataGeo.push(tmpGeoJson);
+      const dataProvObj = await provinceGeo;
+      this.#dataGeoObj[dataProvObj.properties.provinsi] = L.geoJSON(
+        await provinceGeo,
+        {
+          onEachFeature: this.#onEachFeature,
+          style: this.#styleMap,
+        }
+      ).addTo(map);
     });
   }
 }
