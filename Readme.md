@@ -1,6 +1,6 @@
 # Covid-19 Indonesia Unofficial
 
-Web berisi tentang covid-19 yang terjadi di indonesia berdasarkan data dari https://covid19.go.id/peta-sebaran-covid19
+Web berisi tentang covid-19 yang terjadi di indonesia berdasarkan data dari https://covid19.go.id/peta-sebaran-covid19, dan mengimplementasikan dengan peta, daerah daerah atau provinsi yang terinfeksi virus corona lengkap dengan total kasus, jumlah sembuh, meninggal, kasus positif hari ini, sembuh hari ini, menginggal hari ini
 
 ## Tools
 - Prettier
