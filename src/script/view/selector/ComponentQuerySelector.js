@@ -22,6 +22,10 @@ class ComponentQuerySelector {
     getIndoCovidSelector() {
         return this.#indoCovidSelector();
     }
+
+    getComboBoxDataCovid() {
+        return document.querySelector('province-cb');
+    }
 }
 
 export default ComponentQuerySelector;

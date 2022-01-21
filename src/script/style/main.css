@@ -218,6 +218,10 @@ province-list {
 .footer {
     height: 34rem; 
 }
+
+.position-content {
+    position: absolute;
+}
 /* end footer */
 
 /* end header */
@@ -249,5 +253,14 @@ province-list {
     #pencegahan .container-fluid{
         max-height: 100%;
     }
-    
+
+    advice-list, symptom-list {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .position-content {
+        position: relative;
+        background-color: #9055c5;
+    }
 }
