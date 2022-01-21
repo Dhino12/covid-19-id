@@ -13,10 +13,10 @@ class ProvinceList extends HTMLElement {
     render() {
         this.innerHTML = '';
 
-        this._provinceNames.forEach((province, index) => {
+        this._provinceNames.forEach((province) => {
             const createButton = document.createElement('province-item');
             createButton.setAttribute('class', 'list-group-item list-group-item-action');
-            createButton.setAttribute('data-id', index);
+            createButton.setAttribute('data-id', province.provinsi);
             createButton.setProvinceName = province.provinsi;
             this.appendChild(createButton);
         });
