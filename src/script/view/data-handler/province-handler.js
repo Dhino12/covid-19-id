@@ -44,7 +44,7 @@ class Province extends ComponentQuerySelector {
 
         const thiIdItem = e.target.getAttribute('data-id');
 
-        if (!this.#indicatorMobileView) {
+        if (this.#indicatorMobileView) {
           const set = this.#dataGeoObj[thiIdItem];
           set.eachLayer((f) => {
               f.openPopup();
@@ -70,13 +70,16 @@ class Province extends ComponentQuerySelector {
         mobileRes.addListener((x) => {
             if (x.matches) {
               cbChooseDataShow.classList.add('d-none');
-              this.#indicatorMobileView = true;
-            } else {
-              cbChooseDataShow.classList.remove('d-none');
-              this.provinceGeoJson(this.#dataGeoJson);
               this.#indicatorMobileView = false;
+            } else {
+                cbChooseDataShow.classList.remove('d-none');
+                this.#indicatorMobileView = true;
             }
         });
+
+        if (this.#indicatorMobileView) {
+            this.provinceGeoJson(this.#dataGeoJson);
+        }
     }
 
     provinceTitleName(name) {
