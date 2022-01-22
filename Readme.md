@@ -6,6 +6,7 @@ Web berisi tentang covid-19 yang terjadi di indonesia berdasarkan data dari http
 - Prettier
 - ESLint
 - IntelliSense for CSS
+- Vscode
 
 ## Library Used
 - @babel/core ^7.16.0
